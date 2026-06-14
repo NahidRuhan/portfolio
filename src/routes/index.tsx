@@ -453,10 +453,9 @@ function Experience() {
     <section id="experience" className="py-24">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader eyebrow="// experience" title="Where I've taught and built." />
-        <div className="grid md:grid-cols-[1fr_auto] gap-12">
-          <div className="space-y-5">
+        <div className="grid md:grid-cols-2 gap-6">
             {EXPERIENCE.map((e) => (
-              <div key={e.role} className="glass rounded-2xl p-6 card-hover">
+              <div key={e.role} className={`glass rounded-2xl p-6 card-hover ${e.role === "Web Development Instructor" ? "md:col-span-2" : ""}`}>
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div className="flex items-start gap-3">
                     <div className="size-10 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center shrink-0">
@@ -483,19 +482,18 @@ function Experience() {
                 </ul>
               </div>
             ))}
-          </div>
-          <aside className="glass rounded-2xl p-6 md:max-w-xs h-fit">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="size-10 rounded-xl bg-primary/15 text-primary flex items-center justify-center">
+          <aside className="glass rounded-2xl p-6 card-hover flex flex-col justify-center">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="size-10 rounded-xl bg-primary/15 text-primary flex items-center justify-center shrink-0">
                 <GraduationCap className="size-5" />
               </div>
-              <h3 className="font-display font-semibold">Education</h3>
+              <h3 className="font-display font-semibold text-lg">Education</h3>
             </div>
             <p className="font-medium">B.Sc. in Computer Science & Engineering</p>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-muted-foreground mt-1 mb-2">
               Canadian University of Bangladesh
             </p>
-            <p className="font-mono text-xs text-muted-foreground mt-2">
+            <p className="font-mono text-xs text-primary mt-auto">
               Expected July 2026
             </p>
           </aside>
