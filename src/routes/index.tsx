@@ -105,27 +105,60 @@ const SKILLS = [
   {
     icon: Code2,
     title: "Languages",
-    items: ["JavaScript", "TypeScript", "SQL", "Python", "C/C++", "HTML5", "CSS3"],
+    items: [
+      { name: "JavaScript", slug: "javascript" },
+      { name: "TypeScript", slug: "typescript" },
+      { name: "SQL", slug: "mysql" },
+      { name: "Python", slug: "python" },
+      { name: "C/C++", slug: "cplusplus" },
+      { name: "HTML5", slug: "html5" },
+      { name: "CSS3", slug: "css3" },
+    ],
   },
   {
     icon: Server,
     title: "Backend",
-    items: ["Node.js", "Express", "REST APIs", "Firebase", "Supabase", "OAuth 2.0", "JWT", "Stripe"],
+    items: [
+      { name: "Node.js", slug: "nodedotjs" },
+      { name: "Express", slug: "express", invertDark: true },
+      { name: "REST APIs", slug: null },
+      { name: "Firebase", slug: "firebase" },
+      { name: "Supabase", slug: "supabase" },
+      { name: "OAuth 2.0", slug: null },
+      { name: "JWT", slug: "jsonwebtokens" },
+      { name: "Stripe", slug: "stripe" },
+    ],
   },
   {
     icon: Globe,
     title: "Frontend",
-    items: ["React.js", "Next.js", "Tailwind CSS", "TanStack Query", "Axios"],
+    items: [
+      { name: "React.js", slug: "react" },
+      { name: "Next.js", slug: "nextdotjs", invertDark: true },
+      { name: "Tailwind CSS", slug: "tailwindcss" },
+      { name: "TanStack Query", slug: "reactquery" },
+      { name: "Axios", slug: "axios", invertDark: true },
+    ],
   },
   {
     icon: Database,
     title: "Databases",
-    items: ["MongoDB", "MySQL", "PostgreSQL", "Prisma"],
+    items: [
+      { name: "MongoDB", slug: "mongodb" },
+      { name: "MySQL", slug: "mysql" },
+      { name: "PostgreSQL", slug: "postgresql" },
+      { name: "Prisma", slug: "prisma", invertDark: true },
+    ],
   },
   {
     icon: Wrench,
     title: "Tools",
-    items: ["Git", "GitHub", "Cursor", "Postman"],
+    items: [
+      { name: "Git", slug: "git" },
+      { name: "GitHub", slug: "github", invertDark: true },
+      { name: "Cursor", slug: null },
+      { name: "Postman", slug: "postman" },
+    ],
   },
 ];
 
@@ -364,10 +397,19 @@ function Skills() {
               <div className="flex flex-wrap gap-2">
                 {g.items.map((i) => (
                   <span
-                    key={i}
-                    className="text-xs font-mono px-2.5 py-1 rounded-md bg-background/50 border border-border text-muted-foreground"
+                    key={i.name}
+                    className="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-1 rounded-md bg-background/50 border border-border text-muted-foreground"
                   >
-                    {i}
+                    {i.slug ? (
+                      <img
+                        src={`https://cdn.simpleicons.org/${i.slug}`}
+                        alt=""
+                        className={`size-3 ${i.invertDark ? "dark:invert" : ""}`}
+                      />
+                    ) : (
+                      <g.icon className="size-3" />
+                    )}
+                    {i.name}
                   </span>
                 ))}
               </div>
