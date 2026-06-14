@@ -1,0 +1,136 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.875rem;
+  /* Deep navy canvas with warm amber + teal accents */
+  --background: oklch(0.18 0.025 250);
+  --foreground: oklch(0.96 0.005 250);
+  --surface: oklch(0.22 0.028 250);
+  --card: oklch(0.23 0.03 250);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.23 0.03 250);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.82 0.16 75); /* warm amber */
+  --primary-foreground: oklch(0.18 0.025 250);
+  --secondary: oklch(0.72 0.12 195); /* teal */
+  --secondary-foreground: oklch(0.18 0.025 250);
+  --muted: oklch(0.28 0.025 250);
+  --muted-foreground: oklch(0.72 0.02 250);
+  --accent: oklch(0.72 0.12 195);
+  --accent-foreground: oklch(0.18 0.025 250);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.32 0.025 250 / 60%);
+  --input: oklch(0.3 0.025 250);
+  --ring: oklch(0.82 0.16 75);
+
+  --gradient-hero: radial-gradient(
+      1200px 600px at 80% -10%,
+      oklch(0.82 0.16 75 / 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 0% 20%,
+      oklch(0.72 0.12 195 / 0.18),
+      transparent 60%
+    );
+  --gradient-text: linear-gradient(
+    135deg,
+    oklch(0.82 0.16 75) 0%,
+    oklch(0.72 0.12 195) 100%
+  );
+  --shadow-glow: 0 20px 60px -20px oklch(0.82 0.16 75 / 0.35);
+  --shadow-card: 0 10px 40px -20px oklch(0 0 0 / 0.6);
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image: var(--gradient-hero);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass {
+  background: oklch(0.23 0.03 250 / 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid oklch(1 0 0 / 0.06);
+}
+
+@utility card-hover {
+  transition: transform 0.4s var(--transition-smooth),
+    box-shadow 0.4s var(--transition-smooth),
+    border-color 0.4s var(--transition-smooth);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+    border-color: oklch(0.82 0.16 75 / 0.4);
+  }
+}
+
+@utility btn-primary {
+  background: var(--gradient-text);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-glow);
+  transition: transform 0.3s var(--transition-smooth),
+    box-shadow 0.3s var(--transition-smooth);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 70px -20px oklch(0.82 0.16 75 / 0.5);
+  }
+}
