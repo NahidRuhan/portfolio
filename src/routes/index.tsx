@@ -13,6 +13,7 @@ import {
   Wrench,
   GraduationCap,
   Briefcase,
+  Download,
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import avatar from "@/assets/profile-pic.png";
@@ -275,6 +276,13 @@ function Hero() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#projects" className="btn-primary rounded-full px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
                 View my work <ArrowUpRight className="size-4" />
+              </a>
+              <a
+                href="/ruhan_resume.pdf"
+                download="Nahid_Pervej_Ruhan_Resume.pdf"
+                className="glass rounded-full px-6 py-3 text-sm font-semibold inline-flex items-center gap-2 hover:border-primary/40 transition-colors"
+              >
+                Download Resume <Download className="size-4" />
               </a>
               <a
                 href="#contact"
