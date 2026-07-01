@@ -33,7 +33,7 @@ function ProjectDetail() {
         {/* Header Section */}
         <div className="glass rounded-3xl p-6 sm:p-10 mb-12 border border-border/50 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
-          <div className="flex flex-col md:flex-row gap-8 items-start relative z-10">
+          <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
             {/* Image */}
             <div className="w-full md:w-1/2 shrink-0 rounded-2xl overflow-hidden bg-muted/20 border border-border/50 shadow-2xl">
               <img src={project.image} alt={project.name} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />

@@ -600,7 +600,7 @@ function WorkExperience() {
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                   <div>
                     <h3 className="font-display text-xl font-bold mb-2 text-foreground">{job.role}</h3>
-                    <div className="flex items-center gap-3 text-sm">
+                    <div className="flex flex-col sm:flex-row sm:items-center items-start gap-2 sm:gap-3 text-sm">
                       <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
                         {job.company}
                       </span>
