@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowUpRight,
   Github,
@@ -18,16 +18,15 @@ import {
   ExternalLink,
   Calendar,
   Building2,
+  Eye,
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import avatar from "@/assets/profile-pic.png";
 import antigravityImg from "@/assets/antigravity.jpg";
 import cursorImg from "@/assets/cursor.webp";
 import oauthImg from "@/assets/oauth.webp";
-import elaroseImg from "@/assets/elarose.png";
-import spreadFastImg from "@/assets/spreadfast.png";
-import graduateConsultancyImg from "@/assets/graduate-consultancy.png";
-import karaokeImg from "@/assets/karaoke.png";
+import { PROJECTS } from "@/data/projects";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,86 +49,6 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-const PROJECTS = [
-  {
-    name: "ElaRose",
-    tagline: "Clothing Brand E-commerce Platform",
-    description:
-      "Full-stack commercial platform that boosted brand sales by 30% and drives ~BDT 50,000 in monthly revenue through an optimized catalog and seamless COD flow.",
-    stack: ["Next.js", "Node.js", "MongoDB", "Tailwind", "Firebase", "Cloudinary"],
-    live: "https://ela-rose-fornt-end-production.vercel.app/",
-    github: null,
-    highlight: "+30% sales",
-    year: "2024",
-    type: "FULL STACK",
-    image: elaroseImg
-  },
-  {
-    name: "Spread Fast",
-    tagline: "Courier Delivery & Management System",
-    description:
-      "Serverless logistics platform with smart rider dispatching, real-time tracking, RBAC via Firebase Admin SDK, and Stripe checkout with optimistic UI.",
-    stack: ["React", "Express", "MongoDB", "Stripe", "TanStack Query", "Firebase"],
-    live: "https://spread-fast.web.app/",
-    github: "https://github.com/NahidRuhan/Spread-Fast-Client",
-    highlight: "Real-time",
-    year: "2023",
-    type: "FULL STACK",
-    image: spreadFastImg
-  },
-  {
-    name: "Graduate Consultancy",
-    tagline: "Digital Front Door for Consultancy Firm",
-    description:
-      "A modern, high-performance website serving as the digital front door for the firm. Features blazing fast SSR/SSG, SEO optimization, and lead-generating contact forms.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
-    live: "https://next-graduate-consultancy.vercel.app/",
-    github: "https://github.com/NahidRuhan/next-graduate-consultancy",
-    highlight: "SEO Optimized",
-    year: "2023",
-    type: "FRONTEND",
-    image: graduateConsultancyImg
-  },
-  {
-    name: "Issue Tracker API",
-    tagline: "REST API for Tracking Git Issues",
-    description:
-      "Strongly-typed REST API with PostgreSQL, JWT auth, RBAC, dynamic query filtering and a centralized error-handling architecture.",
-    stack: ["TypeScript", "Node.js", "Express", "PostgreSQL", "JWT"],
-    live: null,
-    github: "https://github.com/NahidRuhan/Issue-tracker-API",
-    highlight: "Typed API",
-    year: "2023",
-    type: "BACKEND",
-    image: "https://placehold.co/600x400/111111/444444?text=Issue+Tracker"
-  },
-  {
-    name: "Ruhan's Karaoke Maker",
-    tagline: "AI-Powered Audio Stem Separator",
-    description:
-      "Full-stack web application that utilizes Facebook's Demucs AI model to isolate vocals, drums, and bass from uploaded songs with a synchronized multi-track playback UI.",
-    stack: ["React", "Node.js", "Python", "PyTorch", "FFmpeg", "Tailwind CSS"],
-    live: null,
-    github: "https://github.com/NahidRuhan/Ruhans-Karaoke-Maker",
-    highlight: "Demucs AI",
-    year: "2022",
-    type: "FULL STACK",
-    image: karaokeImg
-  },
-  {
-    name: "Recipe Manager",
-    tagline: "Recipe Sharing & Social Platform",
-    description:
-      "A full-stack recipe management application featuring user authentication, recipe saving, and a social system allowing users to follow others for culinary inspiration.",
-    stack: ["PHP", "MySQL", "HTML", "CSS"],
-    live: "https://recipemanager.infinityfreeapp.com/",
-    github: "https://github.com/NahidRuhan/recipe-save-with-php-sql",
-    highlight: "Social Features",
-    year: "2022",
-    type: "FULL STACK",
-    image: "https://placehold.co/600x400/111111/444444?text=Recipe+Manager"
-  },
-];
 
 const SKILLS = [
   {
@@ -290,7 +209,7 @@ function Portfolio() {
 function Nav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="mx-auto max-w-6xl px-6 pt-6">
+      <div className="mx-auto max-w-7xl px-6 pt-6">
         <nav className="glass rounded-full flex items-center justify-between px-5 py-3">
           <a href="#top" className="font-display font-bold text-base tracking-tight">
             NR<span className="text-gradient">.</span>
@@ -421,7 +340,7 @@ function SectionHeader({
 
 function About() {
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-16 scroll-mt-28 relative">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
           {/* Left Column */}
@@ -519,7 +438,7 @@ function About() {
 
 function Skills() {
   return (
-    <section id="skills" className="py-24">
+    <section id="skills" className="py-16 scroll-mt-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
           eyebrow="// stack"
@@ -570,7 +489,7 @@ function Skills() {
 
 function Projects() {
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-16 scroll-mt-28">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
           eyebrow="// selected work"
@@ -621,35 +540,32 @@ function Projects() {
                 </div>
 
                 {/* Buttons */}
-                <div className="grid grid-cols-2 gap-3 mt-auto">
+                <div className="grid grid-cols-3 gap-2 mt-auto">
                   {p.live ? (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-primary rounded-xl py-2.5 text-xs font-semibold flex items-center justify-center gap-2"
-                    >
-                      <ExternalLink className="size-4" /> LIVE
+                    <a href={p.live} target="_blank" rel="noreferrer" className="btn-primary rounded-xl py-2.5 px-2 text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1 sm:gap-2">
+                      <ExternalLink className="size-3 sm:size-4" /> LIVE
                     </a>
                   ) : (
-                    <div className="btn-primary rounded-xl py-2.5 text-xs font-semibold flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">
-                      <ExternalLink className="size-4" /> LIVE
+                    <div className="btn-primary rounded-xl py-2.5 px-2 text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1 sm:gap-2 opacity-50 cursor-not-allowed">
+                      <ExternalLink className="size-3 sm:size-4" /> LIVE
                     </div>
                   )}
                   {p.github ? (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="glass rounded-xl py-2.5 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-white/5 transition-colors border border-border/50"
-                    >
-                      <Github className="size-4" /> SOURCE
+                    <a href={p.github} target="_blank" rel="noreferrer" className="glass rounded-xl py-2.5 px-2 text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1 sm:gap-2 hover:bg-white/5 transition-colors border border-border/50">
+                      <Github className="size-3 sm:size-4" /> SOURCE
                     </a>
                   ) : (
-                    <div className="glass rounded-xl py-2.5 text-xs font-semibold flex items-center justify-center gap-2 opacity-50 cursor-not-allowed border border-border/50">
-                      <Github className="size-4" /> SOURCE
+                    <div className="glass rounded-xl py-2.5 px-2 text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1 sm:gap-2 opacity-50 cursor-not-allowed border border-border/50">
+                      <Github className="size-3 sm:size-4" /> SOURCE
                     </div>
                   )}
+                  <Link
+                    to={`/projects/$projectId`}
+                    params={{ projectId: p.id }}
+                    className="glass rounded-xl py-2.5 px-2 text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1 sm:gap-2 hover:bg-white/5 transition-colors border border-border/50"
+                  >
+                    <Eye className="size-3 sm:size-4" /> DETAIL
+                  </Link>
                 </div>
               </div>
             </article>
@@ -662,7 +578,7 @@ function Projects() {
 
 function WorkExperience() {
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" className="py-16 scroll-mt-28">
       <div className="mx-auto max-w-4xl px-6">
         <div className="mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
@@ -734,7 +650,7 @@ function WorkExperience() {
 
 function Education() {
   return (
-    <section id="education" className="py-24">
+    <section id="education" className="py-16 scroll-mt-28">
       <div className="mx-auto max-w-4xl px-6">
         <div className="mb-12 flex items-center gap-4">
           <div className="size-12 rounded-xl bg-background border border-border flex items-center justify-center text-primary shadow-sm shrink-0">
@@ -816,7 +732,7 @@ function Education() {
 
 function Contact() {
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-16 scroll-mt-28">
       <div className="mx-auto max-w-4xl px-6">
         <div className="glass rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none" />
